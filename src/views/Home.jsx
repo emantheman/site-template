@@ -1,11 +1,27 @@
 import React from 'react'
-// import '../styles/Home.scss'
+import '../styles/Home.scss'
 
 /**
- * Displays a grid of anchor/images that link to projects.
+ * Clickable thumbnail image.
+ */
+const Thumbnail = ({ href="", src="", alt="", title="" }) => (
+  <div className="Thumbnail">
+    <a className="link" href={href}>
+      <img
+        className="img"
+        src={src}
+        title={title}
+        alt={alt}/>
+    </a>
+  </div>
+)
+
+/**
+ * Displays a grid of thumbnails.
  */
 const Home = () => (
   <div className="Home">
+    <Thumbnail src=""/>
   </div>
 )
 

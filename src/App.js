@@ -14,7 +14,9 @@ function App(props) {
 
   return (
     <div className="App">
-      <Nav path={props.history.location.pathname}/>
+      <Nav
+        path={props.history.location.pathname}
+        name="Manny Price"/>
       { Routes }
     </div>
   )

@@ -5,48 +5,56 @@ import { faCoffee, faQuestion, faQuoteRight, faHome } from '@fortawesome/free-so
 import { faGithubAlt } from '@fortawesome/free-brands-svg-icons'
 import '../styles/Nav.scss'
 
-const Nav = ({ path="" }) => (
+const Nav = ({ path="", name="emmanuel zen price" }) => (
   <header className="Nav">
       <h1 className={"title " + (path !== "/" ? "abroad" : "")}>
-        emmanuel zen price
+        { name }
       </h1>
       <nav className="nav">
         <ul>
           <li className="home">
             <Link
-              to="/"
+              className="hvr-icon-wobble-vertical"
               style={{ fontSize: '15px' }}
-              title="home">
-              <FontAwesomeIcon icon={faHome}/>
+              title="home"
+              to="/">
+              <FontAwesomeIcon className="hvr-icon" icon={faHome}/>
             </Link>
           </li>
-          <li className="about">
+          <li>
             <Link
+              className="hvr-icon-wobble-vertical"
               to="/about"
               style={{ fontSize: '14px' }}
               title="about">
-              <FontAwesomeIcon icon={faQuestion}/>
+              <FontAwesomeIcon className="hvr-icon" icon={faQuestion}/>
             </Link>
           </li>
-          <li className="quotes">
+          <li>
             <Link
+              className="hvr-icon-wobble-vertical"
               to="/quotes"
               style={{ fontSize: '14px' }}
               title="quotes">
-              <FontAwesomeIcon icon={faQuoteRight}/>
+              <FontAwesomeIcon className="hvr-icon" icon={faQuoteRight}/>
             </Link>
           </li>
-          <li className="coffee">
+          <li>
             <Link
+              className="hvr-icon-wobble-vertical"
               to="/work"
               style={{ fontSize: '15px' }}
               title="work">
-              <FontAwesomeIcon icon={faCoffee}/>
+              <FontAwesomeIcon className="hvr-icon" icon={faCoffee}/>
             </Link>
           </li>
-          <li className="github" title="github">
-            <a href="https://github.com/emantheman" target="_blank" rel="noopener noreferrer">
-              <FontAwesomeIcon icon={faGithubAlt}/>
+          <li title="github">
+            <a
+              className="hvr-icon-wobble-vertical"
+              href="https://github.com/emantheman"
+              target="_blank"
+              rel="noopener noreferrer">
+              <FontAwesomeIcon className="hvr-icon" icon={faGithubAlt}/>
             </a>
           </li>
         </ul>

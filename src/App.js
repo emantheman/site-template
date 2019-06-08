@@ -12,10 +12,12 @@ function App(props) {
       render={() => <r.View />} />
   ))
 
+  const path = props.history.location.pathname
+  
   return (
-    <div className="App">
+    <div className={"App " + (path !== "/" ? "abroad" : "")}>
       <Nav
-        path={props.history.location.pathname}
+        path={path}
         name="Manny Price"/>
       { Routes }
     </div>

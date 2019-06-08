@@ -4,6 +4,10 @@
   max-width: 960px;
   width: 100%;
   padding: 40px 20px;
+  transition: 1s;
+  &.abroad {
+    padding: 20px;
+  }
 }
 
 @media screen and (min-width: 550px) {

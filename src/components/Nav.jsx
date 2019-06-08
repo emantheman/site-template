@@ -12,46 +12,42 @@ const Nav = ({ path="", name="emmanuel zen price" }) => (
       </h1>
       <nav className="nav">
         <ul>
-          <li className="home">
+          <li className="hvr-icon-float">
             <Link
-              className="hvr-icon-wobble-vertical"
               style={{ fontSize: '15px' }}
               title="home"
               to="/">
               <FontAwesomeIcon className="hvr-icon" icon={faHome}/>
             </Link>
           </li>
-          <li>
+          <li className="hvr-icon-float">
             <Link
-              className="hvr-icon-wobble-vertical"
               to="/about"
               style={{ fontSize: '14px' }}
               title="about">
               <FontAwesomeIcon className="hvr-icon" icon={faQuestion}/>
             </Link>
           </li>
-          <li>
+          <li className="hvr-icon-float">
             <Link
-              className="hvr-icon-wobble-vertical"
               to="/quotes"
               style={{ fontSize: '14px' }}
               title="quotes">
               <FontAwesomeIcon className="hvr-icon" icon={faQuoteRight}/>
             </Link>
           </li>
-          <li>
+          <li className="hvr-icon-float">
             <Link
-              className="hvr-icon-wobble-vertical"
               to="/work"
               style={{ fontSize: '15px' }}
               title="work">
               <FontAwesomeIcon className="hvr-icon" icon={faCoffee}/>
             </Link>
           </li>
-          <li title="github">
+          <li className="hvr-icon-float">
             <a
-              className="hvr-icon-wobble-vertical"
               href="https://github.com/emantheman"
+              title="github"        
               target="_blank"
               rel="noopener noreferrer">
               <FontAwesomeIcon className="hvr-icon" icon={faGithubAlt}/>

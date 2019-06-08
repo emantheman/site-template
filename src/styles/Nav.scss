@@ -2,9 +2,12 @@
   font-family: 'Roboto Slab', sans-serif;
   position: relative;
   box-sizing: border-box;
+  padding-left: 5px;
+  margin-bottom: 5em;
   .title {
     color: #03516a;
     position: relative;
+    margin-bottom: .5em;
     left: 0px;
     transition: font-size 1s, color 1s, left 1s;
     &.abroad { // shifts to 'background'
@@ -13,7 +16,7 @@
       left: -30px;
     }
   }
-  .nav {
+  .bar {
     ul {
       list-style: none;
       padding: 0;
@@ -23,7 +26,18 @@
         margin-right: 1em;
         height: 1.2em;
         a {
+          display: inline-block;
+          position: relative;
           color: #56288b;
+          transition: color .4s;
+          &.current {
+            color: #bd8ef0;
+          }
+          svg {
+            &:hover {
+              bottom: 5px;
+            }
+          }
         }
       }
     }
@@ -36,29 +50,4 @@
       left: -17px;
     }
   }
-}
-
-/* Icon Float */
-.hvr-icon-float {
-  display: inline-block;
-  vertical-align: middle;
-  -webkit-transform: perspective(1px) translateZ(0);
-  transform: perspective(1px) translateZ(0);
-  box-shadow: 0 0 1px rgba(0, 0, 0, 0);
-  -webkit-transition-duration: 0.3s;
-  transition-duration: 0.3s;
-}
-.hvr-icon-float .hvr-icon {
-  -webkit-transform: translateZ(0);
-  transform: translateZ(0);
-  -webkit-transition-duration: 0.3s;
-  transition-duration: 0.3s;
-  -webkit-transition-property: transform;
-  transition-property: transform;
-  -webkit-transition-timing-function: ease-out;
-  transition-timing-function: ease-out;
-}
-.hvr-icon-float:hover .hvr-icon, .hvr-icon-float:focus .hvr-icon, .hvr-icon-float:active .hvr-icon {
-  -webkit-transform: translateY(-4px);
-  transform: translateY(-4px);
 }

@@ -21,7 +21,11 @@ const Thumbnail = ({ href="", src="", alt="", title="" }) => (
  */
 const Home = () => (
   <div className="Home">
-    <Thumbnail src=""/>
+    <Thumbnail src="https://placeimg.com/310/310/tech"/>
+    <Thumbnail src="https://placeimg.com/310/310/animals"/>
+    <Thumbnail src="https://placeimg.com/310/310/architecture"/>
+    <Thumbnail src="https://placeimg.com/310/310/people"/>
+    <Thumbnail src="https://placeimg.com/310/310/nature/grayscale"/>
   </div>
 )
 

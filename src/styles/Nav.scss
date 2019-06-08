@@ -1,0 +1,45 @@
+.Nav {
+  font-family: 'Roboto Slab', sans-serif;
+  position: relative;
+  box-sizing: border-box;
+  margin: 0 auto;
+  padding: 0 20px;
+  max-width: 960px;
+  width: 100%;
+  .title {
+    color: #03516a;
+    position: relative;
+    left: 0px;
+    transition: font-size 1s, color 1s, left 1s;
+    &.abroad { // shifts to 'background'
+      font-size: 18px;
+      color: rgba(128, 128, 128, 0.365);
+      left: -50px;
+    }
+  }
+  .nav {
+    ul {
+      list-style: none;
+      padding: 0;
+      li {
+        float: left;
+        margin-right: 1em;
+        height: 1.2em;
+      }
+    }
+  }
+}
+
+
+@media screen and (min-width: 550px) {
+  .Home {
+    width: 80%;
+  }
+}
+
+@media screen and (min-width: 320px) {
+  .Home {
+    width: 85%;
+    padding: 0;
+  }
+}

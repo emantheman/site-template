@@ -1,0 +1,10 @@
+.fade-in {
+  animation-name: fadeInOpacity;
+	animation-iteration-count: 1;
+	animation-timing-function: ease-in;
+  animation-duration: 1s;
+}
+@keyframes fadeInOpacity {
+	from { opacity: 0; }
+	to { opacity: 1; }
+}

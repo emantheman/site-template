@@ -1,0 +1,161 @@
+.TicTacToe {
+  font: 14px "Century Gothic", Futura, sans-serif;
+  ol {
+    padding-left: 30px;
+    width: 120px;
+  }
+  /* Title of game */
+  .title {
+    text-align: center;
+    font-size: 4em;
+    margin-bottom: 20px;
+  }
+  // container for game
+  .board-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    // gameBoard
+    .Board {
+      position: relative;
+      max-width: 50%;
+      // info and interface
+      .interface {
+        position: absolute;
+        right: -265px;
+        .selected {
+          font-weight: bold;
+        }
+        .level {
+          opacity: 1;
+          transition: .2s opacity;
+          &.hidden {
+            opacity: .4;
+            pointer-events: none;
+          }
+          .choice {
+            margin-left: 12px;
+            &.clickable {
+              cursor: pointer;
+            }
+          }
+        }
+      }
+      // for three rows
+      .row {
+        &:after {
+          clear: both;
+          content: "";
+          display: table;
+        }
+        // squares inside row
+        .Square {
+          background: #fff;
+          border: 1px solid #999;
+          float: left;
+          font-size: 74px;
+          font-weight: bold;
+          line-height: 34px;
+          height: 120px;
+          margin-right: -1px;
+          margin-top: -1px;
+          padding: 0;
+          text-align: center;
+          width: 120px;
+          &.win {
+            animation: 2s flash-green cubic-bezier(0.45, 0.01, 0.24, 0.94);
+          }
+          &.win.cpu-win,
+          &.cpu-win {
+            animation: 2s flash-red cubic-bezier(0.45, 0.01, 0.24, 0.94);
+          }
+          &.tie {
+            animation: 2s flash-grey cubic-bezier(0.45, 0.01, 0.24, 0.94);
+          }
+          &.clickable {
+            cursor: pointer;
+          }
+        }
+      }
+      // status of game
+      .status {
+        font-size: 1.4em;
+        text-align: center;
+        margin: 15px 0;
+      }
+    }
+  }
+}
+
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 60px;
+  height: 34px;
+  margin-left: 10px;
+  input { 
+    opacity: 0;
+    width: 0;
+    height: 0;
+    &:checked + .slider {
+      background-color: #2196F3;
+    }
+    &:checked + .slider:before {
+      -webkit-transform: translateX(11px);
+      -ms-transform: translateX(11px);
+      transform: translateX(11px);
+    }
+  }
+  .versus {
+    right: -65px;
+    position: absolute;
+    width: 83px;
+  }
+  .slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    height: 23px;
+    width: 34px;
+    background-color: #ccc;
+    -webkit-transition: .4s;
+    transition: .4s;
+    &:before {
+      position: absolute;
+      content: "";
+      height: 15px;
+      width: 15px;
+      left: 4px;
+      bottom: 4px;
+      background-color: white;
+      -webkit-transition: .4s;
+      transition: .4s;
+    }
+    &.round {
+      border-radius: 50px;
+    }
+    &.round:before {
+      border-radius: 50%;
+    }
+  }
+}
+
+@keyframes flash-green {
+  from { background-color: rgb(70, 175, 35); }
+  to { background-color: white; }
+}
+@keyframes flash-red {
+  from { background-color: rgb(191, 36, 36); }
+  to { background-color: white; }
+}
+@keyframes flash-grey {
+  from { background-color: rgb(124, 124, 124); }
+  to { background-color: white; }
+}
+@keyframes fadeInOpacity {
+	from { opacity: 0; }
+	to { opacity: 1; }
+}

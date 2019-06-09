@@ -26,8 +26,8 @@ const Thumbnail = ({ to="", src="", alt="", title="" }) => (
  * Displays a grid of thumbnails.
  */
 const Home = () => (
-  <div className="Home">
-    <Thumbnail src="https://placeimg.com/310/310/tech"/>
+  <div className="Home fade-in">
+    <Thumbnail to="/tictactoe" src={`${process.env.PUBLIC_URL}/images/tictactoe.png`}/>
     <Thumbnail src="https://placeimg.com/310/310/animals"/>
     <Thumbnail src="https://placeimg.com/310/310/architecture"/>
     <Thumbnail src="https://placeimg.com/310/310/people"/>

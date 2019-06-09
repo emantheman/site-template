@@ -2,7 +2,12 @@ import React from 'react'
 import generateLinks from '../config/navlinks'
 import '../styles/Nav.scss'
 
-const Nav = ({ path="", name="emmanuel zen price" }) => {
+/**
+ * Renders a panel for site navigation.
+ * 
+ * @param {Object} props - props being passed from upstream.
+ */
+const Nav = ({ path="/", name="emmanuel zen price" }) => {
   const Links = generateLinks(path)
   return (
     <header className="Nav">

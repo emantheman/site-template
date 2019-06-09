@@ -4,6 +4,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faCoffee, faQuestion, faQuoteRight, faHome } from '@fortawesome/free-solid-svg-icons'
 import { faGithubAlt } from '@fortawesome/free-brands-svg-icons'
 
+// link data
 const navLinks = [{
   to: '/',
   title: 'home',
@@ -35,32 +36,39 @@ const navLinks = [{
   external: true
 }]
 
-const hydrate = a => path => a.map((link, i) => {
-  let anchor
-  if (link.external) {
-    anchor = (
+/**
+ * Takes an array and returns a function that takes a string--the current path--and converts the link-data into jsx. The path is used to add a class "current" to the link to the path currently being served.
+ * 
+ * @param {Array} linkData - array of objects containing link data
+ * @param {String} path - the current path
+ */
+const hydrate = linkData => path => linkData.map((data, i) => {
+  let link
+  if (data.external) { // if the link is external, return an anchor tag
+    link = (
       <a
-        href={link.href}
-        title={link.title}
+        href={data.href}
+        title={data.title}
         target="_blank"
         rel="noopener noreferrer">
-        <FontAwesomeIcon icon={link.icon}/>
+        <FontAwesomeIcon icon={data.icon}/>
       </a>
     )
-  } else {
-    anchor = (
+  } else { // otherwise, a link to a route
+    link = (
       <Link
-        className={(path === link.to ? 'current' : '')}
-        style={link.style}
-        title={link.title}
-        to={link.to}>
-        <FontAwesomeIcon icon={link.icon}/>
+        className={(path === data.to ? 'current' : '')}
+        style={data.style}
+        title={data.title}
+        to={data.to}>
+        <FontAwesomeIcon icon={data.icon}/>
       </Link>
     )
   }
-  return <li key={i}>{anchor}</li>
+  return <li key={i}>{link}</li>
 })
 
+// prime with link-data, await path
 const generateLinks = hydrate(navLinks)
 
 export default generateLinks

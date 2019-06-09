@@ -1,18 +1,24 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 import '../styles/Home.scss'
 
 /**
  * Clickable thumbnail image.
+ * 
+ * @param {String} to - route url
+ * @param {String} src - img source (use process.env.PUBLIC_URL to access '/public' folder)
+ * @param {String} alt - img text for when img can't load
+ * @param {String} title - img text for cursor hover
  */
-const Thumbnail = ({ href="", src="", alt="", title="" }) => (
+const Thumbnail = ({ to="", src="", alt="", title="" }) => (
   <div className="Thumbnail">
-    <a className="link" href={href}>
+    <Link className="link" to={to}>
       <img
         className="img"
         src={src}
         title={title}
         alt={alt}/>
-    </a>
+    </Link>
   </div>
 )
 

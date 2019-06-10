@@ -27,8 +27,14 @@ const Thumbnail = ({ to="", src="", alt="", title="" }) => (
  */
 const Home = () => (
   <div className="Home fade-in">
-    <Thumbnail to="/tictactoe" src={`${process.env.PUBLIC_URL}/images/tictactoe.png`}/>
-    <Thumbnail src="https://placeimg.com/310/310/animals"/>
+    <Thumbnail
+      to="/tic-tac-toe"
+      src={`${process.env.PUBLIC_URL}/images/tictactoe.png`}
+      title="tic-tac-toe"/>
+    <Thumbnail
+      to="/cgol"
+      src={`${process.env.PUBLIC_URL}/images/cgol.png`}
+      title="conway's game of life"/>
     <Thumbnail src="https://placeimg.com/310/310/architecture"/>
     <Thumbnail src="https://placeimg.com/310/310/people"/>
     <Thumbnail src="https://placeimg.com/310/310/nature/grayscale"/>

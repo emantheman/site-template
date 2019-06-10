@@ -1,3 +1,4 @@
+import CGOL from '../views/CGOL'
 import Home from '../views/Home'
 import TicTacToe from '../views/TicTacToe'
 
@@ -6,7 +7,10 @@ const routes = [{
   path: '/'
 }, {
   View: TicTacToe,
-  path: '/tictactoe'
+  path: '/tic-tac-toe'
+}, {
+  View: CGOL,
+  path: '/cgol'
 }]
 
 export default routes

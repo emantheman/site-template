@@ -4,25 +4,30 @@
   justify-content: space-between;
   font-size: 1.5em;
   font-family: Georgia, serif;
-  strong {
-    &.small {
-      font-size: 0.85em;
-      padding-top: 10px;
-    }
-  }
-  ul {
-    // list-style-type: none;
+  .small-list {
     margin: 5px 0;
     columns: 2;
     -webkit-columns: 2;
     -moz-columns: 2;
-    &.small {
-      font-size: .8em;
+    font-size: .8em;
+    &-pre {
+      font-size: 0.85em;
+      padding-top: 30px;
     }
     li {
       position: relative;
       list-style: square;
       margin-bottom: 3px;
+    }
+  }
+  p {
+    line-height: 1.5em;
+    margin-bottom: 20px;
+  }
+  ol {
+    margin: 0;
+    li {
+      margin: 12px 0;
     }
   }
 }

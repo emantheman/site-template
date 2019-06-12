@@ -4,14 +4,12 @@ import '../styles/Description.scss'
 /**
  * A description for a project.
  * 
- * @param {Object} props - properties being passed from upstream
+ * @param {jsx} children - jsx elements
  */
-const Description = props => {
-  return (
-    <article className="Description">
-      {props.children}
-    </article>
-  )
-}
+const Description = ({ children }) => (
+  <article className="Description">
+    {children}
+  </article>
+)
 
 export default Description

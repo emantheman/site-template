@@ -1,0 +1,28 @@
+.Description {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  font-size: 1.5em;
+  font-family: Georgia, serif;
+  strong {
+    &.small {
+      font-size: 0.85em;
+      padding-top: 10px;
+    }
+  }
+  ul {
+    // list-style-type: none;
+    margin: 5px 0;
+    columns: 2;
+    -webkit-columns: 2;
+    -moz-columns: 2;
+    &.small {
+      font-size: .8em;
+    }
+    li {
+      position: relative;
+      list-style: square;
+      margin-bottom: 3px;
+    }
+  }
+}

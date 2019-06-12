@@ -7,8 +7,12 @@
   .Life {
     position: relative;
     margin-top: 10px;
-    margin-left: 28px;
     height: 99%;
+    .screen, .Interface {
+      display: block;
+      margin: auto;
+      margin-bottom: 2px;
+    }
     &:focus {
       outline: none;
     }

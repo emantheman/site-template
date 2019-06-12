@@ -12,11 +12,11 @@ export default class Life extends Component {
     // make col and row number dependent on svg offset width and height
 
     /*
-    note: this is calculated from the height(600) and width(900)
+    note: this is calculated from the height(570) and width(930)
     of the grid divided by the size of each cell(15)
     */
     const cols = 62, // number of rows
-      rows = 38 // and columns in the grid 
+          rows = 38 // and columns in the grid 
 
 
     // returns a 2d array of false values
@@ -34,9 +34,9 @@ export default class Life extends Component {
       grid: blankGrid(),
       default: blankGrid(),
       mouseIsDown: false,
-      penType: true,
+      penType: true, // true revives cells, false destroys
       enlarged: true,
-      config: { // preset cells
+      config: { // preset seeds
         gosperGlider: [[1, 5], [1, 6], [2, 5], [2, 6], [11, 5], [11, 6],
         [11, 7], [12, 4], [12, 8], [13, 3], [13, 9], [14, 3],
         [14, 9], [15, 6], [16, 4], [16, 8], [17, 5], [17, 6],
@@ -81,29 +81,8 @@ export default class Life extends Component {
     window.addEventListener('resize', this.resizeGrid)
   }
 
-  /**
-   * Resizes game of life on screen-size change.
-   */
-  resizeGrid = () => {
-    // get width of screen
-    const x = window.innerWidth
-    const width = x - 56 // accounts for left and right margins
-
-    // if both cellSizes divide evenly into new width
-    if (Number.isInteger(width / 15) && Number.isInteger(width / 10)) {
-      // get size of cell
-      const { cellSize } = this.state
-      // calculates number of columns (width / cellsize)
-      const cols = width / cellSize
-
-      // reset state
-      this.setState({
-        width,
-        cols,
-        grid: this.newGrid()
-        // reset grid
-      }, this.resetGrid)
-    }
+  componentDidMount() {
+    this.resizeGrid()
   }
 
   /**
@@ -376,7 +355,41 @@ export default class Life extends Component {
   }
 
   /**
-   * Changes cell size and density of grid
+   * Resizes game of life on screen-size change.
+   */
+  resizeGrid = () => {
+    // width of screen
+    const screenWidth = window.innerWidth
+    // size of cell
+    const { cellSize } = this.state
+
+    // new width, new numCols
+    let width
+    // breakpoints
+    if (screenWidth >= 1024) {
+      width = 930
+    } else if (screenWidth >= 600) {
+      width = 810
+    } else if (screenWidth >= 550) {
+      width = 450
+    } else {
+      width = 360
+    }
+
+    // get num columns
+    const cols = width / cellSize
+
+    // resize grid
+    this.setState({
+      width,
+      cols,
+      grid: this.newGrid()
+      // reset grid
+    }, this.resetGrid)
+  }
+
+  /**
+   * Changes cell size and density of grid // CHANGE COL AND ROW
    */
   changeCellSize = () => {
     this.setState(({ enlarged }) => {
@@ -384,16 +397,16 @@ export default class Life extends Component {
       let rows, cols, cellSize
       if (enlarged) {
         // shrink cells; increase grid density
-        cols = 105
-        rows = 66
         cellSize = 10
         // otherwise,
       } else {
         // enlarge cells; reduce grid density
-        cols = 70
-        rows = 44
         cellSize = 15
       }
+
+      // calculate number of cols and rows
+      cols = this.state.width / cellSize
+      rows = this.state.height / cellSize
 
       return {
         cols,
@@ -428,6 +441,7 @@ export default class Life extends Component {
         tabIndex={0}>
         {/* Liquid crystal display for the miracle of Life */}
         <svg
+          className="screen"
           height={height}
           width={width}
           style={{ border: '1px solid black' }}>
@@ -481,7 +495,7 @@ export default class Life extends Component {
           <FontAwesomeIcon
             icon={enlarged ? faSearchMinus : faSearchPlus}
             style={{ marginLeft: '9px', cursor: 'pointer' }}
-            title={enlarged ? "shrink grid" : "magnify grid"}
+            title={enlarged ? "zoom-out" : "zoom-in"}
             onClick={this.changeCellSize} />
           {/* Current Pen Type - reverses onClick */}
           <FontAwesomeIcon

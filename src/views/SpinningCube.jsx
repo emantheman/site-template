@@ -18,7 +18,7 @@ export default class SpinningCube extends Component {
     const { innerColor, outerColor } = this.state
 
     return (
-      <div className="SpinningCube">
+      <div className="SpinningCube fade-in">
         <div style={{width: '423px', margin: '0 auto'}}>
           <DiCube
             innerColor={innerColor}

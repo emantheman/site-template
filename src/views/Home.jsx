@@ -7,19 +7,18 @@ import '../styles/Home.scss'
  * 
  * @param {String} to - route url
  * @param {String} src - img source (use process.env.PUBLIC_URL to access '/public' folder)
- * @param {String} alt - img text for when img can't load
- * @param {String} title - img text for cursor hover
+ * @param {String} alt - text for when img can't load
+ * @param {String} title - text for cursor hover
  */
 const Thumbnail = ({ to="", src="", alt="", title="" }) => (
-  <div className="Thumbnail">
-    <Link className="link" to={to}>
-      <img
-        className="img"
-        src={src}
-        title={title}
-        alt={alt}/>
-    </Link>
-  </div>
+  <Link className="link" to={to} title={title}>
+    <div className="Thumbnail">
+        <img
+          className="img"
+          src={src}
+          alt={alt}/>
+    </div>
+  </Link>
 )
 
 /**

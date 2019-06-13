@@ -16,7 +16,7 @@ export default class Life extends Component {
     of the grid divided by the size of each cell(15)
     */
     const cols = 62, // number of rows
-          rows = 38 // and columns in the grid 
+      rows = 38 // and columns in the grid 
 
 
     // returns a 2d array of false values
@@ -121,14 +121,16 @@ export default class Life extends Component {
   printPopulation = () => {
     // find the population
     const population = this.countPopulation()
+    // if the game is not paused and there are no living cells, reset grid
     if (!this.state.paused && population === 0) this.resetGrid()
 
     // if the population exceeds 100
     if (population > 100) {
-      // returns a string in the form: '~<digit exceeding 100, floored to a multiple of 50'
-      // e.g., '~70' -- where the '~' character denotes 'approximately'
+      // returns a string in the form: '~<digit exceeding 100, floored to a multiple of 50>'
+      // e.g., '~250' -- where the '~' character denotes 'approximately'
       return '~' + +(Math.ceil(population / 50.0) * 50)
     } else {
+      // otherwise return exact population
       return population
     }
   }
@@ -174,7 +176,7 @@ export default class Life extends Component {
   /**
    * Returns a new blank or randomized grid
    * 
-   * @param {Boolean} randomize - if true the new grid is randomized
+   * @param {Boolean} randomize - if true the new grid is randomly assigned live cells
    */
   newGrid = (randomize = false) => {
     const { cols, rows } = this.state
@@ -460,7 +462,7 @@ export default class Life extends Component {
             </defs>
             {/* Clickable "screen" placed in foreground to detect mouse events without cells interfering */}
             <rect
-              style={{cursor: 'pointer'}}
+              style={{ cursor: 'pointer' }}
               width="100%"
               height="100%"
               fill="url(#grid)"

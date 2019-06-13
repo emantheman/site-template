@@ -11,3 +11,13 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
 }
+
+@font-face {
+  font-family: 'Computer Modern';
+  src: local('Computer Modern'), url(./fonts/cmunrm.woff) format('woff');
+}
+@font-face {
+  font-family: 'Computer Modern';
+  src: local('Computer Modern'), url(./fonts/cmunbx.woff) format('woff');
+  font-weight: bold;
+}

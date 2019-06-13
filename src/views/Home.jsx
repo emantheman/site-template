@@ -34,7 +34,10 @@ const Home = () => (
       to="/cgol"
       src={`${process.env.PUBLIC_URL}/images/cgol.png`}
       title="conway's game of life"/>
-    <Thumbnail src="https://placeimg.com/310/310/architecture"/>
+    <Thumbnail
+      to="/dicube"
+      src="https://placeimg.com/310/310/architecture"
+      title="dicube"/>
     <Thumbnail src="https://placeimg.com/310/310/people"/>
     <Thumbnail src="https://placeimg.com/310/310/nature/grayscale"/>
   </div>

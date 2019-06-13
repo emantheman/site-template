@@ -12,6 +12,7 @@
   }
 }
 
+// defaults
 :focus, :active {
   outline: 0;
   border: none;
@@ -28,4 +29,26 @@
   .App {
     width: 85%;
   }
+}
+
+// fonts
+@font-face {
+  font-family: "Computer Modern";
+  src: url('http://mirrors.ctan.org/fonts/cm-unicode/fonts/otf/cmunss.otf');
+}
+@font-face {
+  font-family: "Computer Modern";
+  src: url('http://mirrors.ctan.org/fonts/cm-unicode/fonts/otf/cmunsx.otf');
+  font-weight: bold;
+}
+@font-face {
+  font-family: "Computer Modern";
+  src: url('http://mirrors.ctan.org/fonts/cm-unicode/fonts/otf/cmunsi.otf');
+  font-style: italic, oblique;
+}
+@font-face {
+  font-family: "Computer Modern";
+  src: url('http://mirrors.ctan.org/fonts/cm-unicode/fonts/otf/cmunbxo.otf');
+  font-weight: bold;
+  font-style: italic, oblique;
 }

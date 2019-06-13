@@ -43,6 +43,8 @@ export default class Life extends Component {
         [17, 7], [18, 6], [21, 3], [21, 4], [21, 5], [22, 3],
         [22, 4], [22, 5], [23, 2], [23, 6], [25, 1], [25, 2],
         [25, 6], [25, 7], [35, 3], [35, 4], [36, 3], [36, 4]],
+        tencell: new Array(10).fill(null).map((l, i) => [i+25, 19]),
+        thirtycell: new Array(30).fill(null).map((l, i) => [i+15, 19]),
         shruiken: [[30, 33], [30, 36], [31, 37], [31, 38], [30, 39], [29, 38],
         [29, 37], [33, 33], [34, 34], [35, 34], [36, 33], [35, 32],
         [34, 32], [30, 30], [31, 29], [31, 28], [30, 27], [29, 28],
@@ -79,6 +81,8 @@ export default class Life extends Component {
   componentWillMount() {
     // event listener checks if window is resized
     window.addEventListener('resize', this.resizeGrid)
+    // close async ops
+    this.setState({ paused: true })
   }
 
   componentDidMount() {
@@ -525,13 +529,15 @@ export default class Life extends Component {
             <optgroup label="presets">
               <option value="blank">blank</option>
               <option value="random">random</option>
-              <option value="gosperGlider">gosperGlider</option>
+              <option value="tencell">10cell</option>
+              <option value="thirtycell">30cell</option>
               <option value="shruiken">shruiken</option>
               <option value="gammadion">gammadion</option>
               <option value="megagammadion">megagammadion</option>
               <option value="dragonfly">dragonfly</option>
               <option value="butterfly">butterfly</option>
               <option value="ascension">ascension</option>
+              <option value="gosperGlider">gosperGlider</option>
             </optgroup>
           </select>
           {/* Tick rate range */}

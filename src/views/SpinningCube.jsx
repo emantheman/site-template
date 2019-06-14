@@ -1,5 +1,4 @@
 import React, { Component } from 'react'
-import { ChromePicker } from 'react-color'
 import ColorPicker from '../components/ColorPicker'
 import DiCube from '../components/DiCube'
 import Description from '../components/Description'

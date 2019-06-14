@@ -9,17 +9,11 @@ const ADJECTIVES = [
   'ultra-fast',
   'reactive',
   'monadic',
-  'actionable',
   'innovative',
   'elegant',
-  'meaningful',
   'efficient',
-  'engaging',
   'immersive',
-  'influential',
   'smart',
-  'personal',
-  'ill-defined',
 ]
 
 export default class Rotator extends Component {

@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import Board from '../components/tictactoe/Board'
+import Description from '../components/Description'
 import '../styles/TicTacToe.scss'
 
 export default class TicTacToe extends Component {
@@ -350,8 +351,24 @@ export default class TicTacToe extends Component {
             winSquares={win.combo}
             squares={squares}
             status={status}
-            moves={Moves} />
+            moves={Moves}/>
         </div>
+        <Description>
+          <p>
+            Tic-tac-toe (abbrev. TTT) is the quintessential Project 1 at coding bootcamp. When you first attempt it, you're amazed at how challenging it is to represent programmatically something that seems obvious intuitively. A child could play tic-tac-toe, right? So what exactly are you getting hung up on, you wonder. A litany of questions bounce around your head on the day it's assigned. Do you represent a board as a 1- or 2D array? How exactly do you render it in html/css? How do players alternate turns? Is there a simple algorithm to deal with win/lose/tie scenarios? It all feels pretty daunting at first, but as you code you get more comfortable testing out ideas and more discerning at knowing what to pursue and what to abandon.
+          </p>
+          <p>
+            When I first completed TTT, I was earnestly proud until I found out that another student (who I've since come to really adore) showed me his version, which was not only aesthetically pleasing (with perfect colors and a special font and everything all aligned and such) but allowed you to <i>play against the computer</i> with different difficulty settings. "Against the computer"? WTF?? Isn't this your first coding class? He told me that he had seen the assignment two weeks before the course started and had been working on it since then, which made me feel a <i>little</i> better, but still... Thankfully he was kind enough to walk me through the algorithm. It is known as the <i>minimax</i> algorithm, and really isn't too confusing—that is, once you stare at it for an hour or so.
+          </p>
+          <h2>Minimax</h2>
+          <p>
+            Minimax (abbrev. MM) is a recursive backtracking algorithm that tests out certain moves and assigns values to those moves based on whether they result in a win or loss down the line. In order for it to work, the 
+          </p>
+          <div className="divider"/>
+          <p>
+            By the time the assignment was due I was sure I knew how to make it work, but we were already moving on to new material, so I put it aside for the time being. But not too long ago, while going Facebook's React tutorial, which has you writing TTT the React way, I thought I might finally give it another go.
+          </p>
+        </Description>
       </div>
     )
   }

@@ -2,7 +2,7 @@
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
-  font-size: 1.5em;
+  font-size: 1.6em;
   font-family: Georgia, serif;
   .small-list {
     margin: 5px 0;
@@ -24,6 +24,10 @@
     line-height: 1.5em;
     margin-bottom: 20px;
   }
+  h2 {
+    margin-bottom: 0;
+    color: #1c2644d6;
+  }
   ol {
     margin: 0;
     li {
@@ -38,5 +42,10 @@
   }
   .center {
     text-align: center;
+  }
+  .divider {
+    background-color: #3434344a;
+    height: 4px;
+    width: 26%;
   }
 }

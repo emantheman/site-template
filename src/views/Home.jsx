@@ -42,7 +42,6 @@ const Home = () => (
       to="/t-rot"
       src={`${process.env.PUBLIC_URL}/images/t-rot.png`}
       title="text rotator"/>
-    <Thumbnail src="https://placeimg.com/310/310/nature/grayscale"/>
   </div>
 )
 

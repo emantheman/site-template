@@ -1,19 +1,18 @@
 import React, { Component } from 'react'
 import TextRotator from '../components/TextRotator'
-import Description from '../components/Description'
 import '../styles/Rotator.scss'
 
 const ADJECTIVES = [
-  'sleek',
-  'compact',
-  'ultra-fast',
-  'reactive',
-  'monadic',
-  'innovative',
-  'elegant',
-  'efficient',
-  'immersive',
-  'smart',
+  'web dev',
+  'meditator',
+  'creative',
+  'gamer',
+  'chess-player',
+  'mentor',
+  'hiker',
+  'book-reader',
+  'logophile',
+  'visionary'
 ]
 
 export default class Rotator extends Component {
@@ -32,18 +31,18 @@ export default class Rotator extends Component {
 
   render() {
     const { blend } = this.state
-    const bgColor = blend ? 'white' : 'rgba(0,0,0,0.85)'
-    const fontColor = blend ? 'coral' : 'white'
+    const bgColor = blend ? 'white' : '#ff7f50d5'
+    const fontColor = blend ? 'black' : 'white'
     return (
       <div className="Rotator fade-in">
         <div className="container">
-          <span className="proclamation">Our&nbsp; product&nbsp; is</span>
+          <span className="proclamation">Emmanuel&nbsp; Price:&nbsp; </span>
           <TextRotator
             words={ ADJECTIVES }
             spinRate={ 4.2 }
             reverseRotation={ true }
             positionRight={ '-90px' }
-            width="257px"
+            width="300px"
             backgroundColor={ bgColor }
             fontColor={ fontColor }/>
           <label className="options">

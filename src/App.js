@@ -25,7 +25,7 @@ function App(props) {
     <div className={"App " + (path !== "/" ? "abroad" : "")}>
       <Nav
         path={path}
-        name="Manny Price"/>
+        name="Emmanuel Price"/>
       { Routes }
     </div>
   )

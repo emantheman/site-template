@@ -121,6 +121,7 @@ class TextRotator extends Component {
         lineHeight: '1.1em',
         paddingLeft: '7px',
         transition: 'color .8s, background-color .8s',
+        fontStyle: 'italic',
         textAlign: align,
         color: fontColor,
         backgroundColor,

@@ -1,8 +1,8 @@
-$nav-link: rgb(2, 2, 150);
-$nav-link-selected: lighten( $nav-link, 50% );
+$nav-link: #2121ef;
+$nav-link-selected: lighten( $nav-link, 25% );
 
 .Nav {
-  font-family: 'Roboto Slab', sans-serif;
+  font-family: sans-serif;
   position: relative;
   box-sizing: border-box;
   padding-left: 5px;
@@ -34,6 +34,7 @@ $nav-link-selected: lighten( $nav-link, 50% );
           transition: color .4s;
           &.current {
             color: $nav-link-selected;
+            cursor: auto;
           }
           svg {
             &:hover {

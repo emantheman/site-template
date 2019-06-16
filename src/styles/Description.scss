@@ -34,6 +34,15 @@
       margin: 12px 0;
     }
   }
+  pre {
+    font-family: monospace;
+    font-size: .8em;
+    background-color: #f8f9fa;
+    border: 1px solid #eaecf0;
+    white-space: pre-wrap;
+    width: 100%;
+    padding: 1em;
+  }
   .math {
     display: block;
     font-family: "Computer Modern", sans-serif;
@@ -47,5 +56,10 @@
     background-color: #3434344a;
     height: 4px;
     width: 26%;
+  }
+  .footnote {
+    position: relative;
+    font-size: .8em;
+    width: 100%;
   }
 }

@@ -18,7 +18,17 @@
   border: none;
   outline-style: none;
 }
+// (prevents sup/bs from affecting line-height
+sup, sub {
+  vertical-align: baseline;
+  position: relative;
+  top: -0.4em;
+}
+sub { 
+  top: 0.4em; 
+}
 
+// breakpoints
 @media screen and (min-width: 550px) {
   .App {
     width: 80%;
@@ -32,23 +42,3 @@
 }
 
 // fonts
-@font-face {
-  font-family: "Computer Modern";
-  src: url('http://mirrors.ctan.org/fonts/cm-unicode/fonts/otf/cmunss.otf');
-}
-@font-face {
-  font-family: "Computer Modern";
-  src: url('http://mirrors.ctan.org/fonts/cm-unicode/fonts/otf/cmunsx.otf');
-  font-weight: bold;
-}
-@font-face {
-  font-family: "Computer Modern";
-  src: url('http://mirrors.ctan.org/fonts/cm-unicode/fonts/otf/cmunsi.otf');
-  font-style: italic, oblique;
-}
-@font-face {
-  font-family: "Computer Modern";
-  src: url('http://mirrors.ctan.org/fonts/cm-unicode/fonts/otf/cmunbxo.otf');
-  font-weight: bold;
-  font-style: italic, oblique;
-}

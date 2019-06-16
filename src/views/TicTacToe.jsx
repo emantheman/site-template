@@ -244,7 +244,7 @@ export default class TicTacToe extends Component {
     */
     let bestMove, bestScore
     if (player === 'O') { // if CPU turn
-      bestScore = -1000 // start low
+      bestScore = -Infinity // start low
       for (let i = 0; i < moves.length; i++) {
         // if score at index is greater than best score
         if (moves[i].score > bestScore) {
@@ -254,7 +254,7 @@ export default class TicTacToe extends Component {
         }
       }
     } else { // if HU turn
-      bestScore = 1000 // start high
+      bestScore = Infinity // start high
       for (let i = 0; i < moves.length; i++) {
         // if score at index is less than best score
         if (moves[i].score < bestScore) {
@@ -353,21 +353,54 @@ export default class TicTacToe extends Component {
             status={status}
             moves={Moves}/>
         </div>
+        {/* Description of game */}
         <Description>
           <p>
             Tic-tac-toe (abbrev. TTT) is a simple game that everyone knows how to play, but when you're learning to code, building it is a different matter. It's not that it's difficult, per se. Just that, at first, you're amazed at how challenging it is to represent programmatically something that might appear obvious intuitively. A child could play tic-tac-toe, right? So what exactly are you getting hung up on? All sorts of questions come up out of the  Do you represent a board as a 1- or 2D array? How exactly do you render it in html/css? How do players alternate turns? Is there a simple algorithm to deal with win/lose/tie scenarios? It all feels pretty daunting at first, but as you code you get more comfortable testing out ideas and more discerning at knowing what to pursue and what to abandon.
           </p>
           <p>
-            When I first completed TTT, I was earnestly proud until I found out that another student (who I've since come to really adore) showed me his version, which was not only aesthetically pleasing (with perfect colors and a special font and everything all aligned and such) but allowed you to <i>play against the computer</i> with different difficulty settings. "Against the computer"? WTF?? Isn't this your first coding class? He told me that he had seen the assignment two weeks before the course started and had been working on it since then, which made me feel a <i>little</i> better, but still... Thankfully he was kind enough to walk me through the algorithm. It is known as the <i>minimax</i> algorithm, and really isn't too confusing—that is, once you stare at it for an hour or so.
+            When I first completed TTT, I was <i>earnestly</i> proud of myself, that is, until another student in my coding bootcamp showed me his version, which was not only aesthetically pleasing (with perfect colors and a special font and everything all aligned and such) but allowed you to play with someone on another server via websocket and, more miraculously, <i>to play against the computer</i>. "Isn't this your first coding class?" I asked him; it was. He told me that he had seen the assignment two weeks before the course started and had been working on it since then, but this fact didn't much mitigate my envy. He was not only talented, however, but very kind, and together we stepped through the algorithm (and have since become good friends). It is known as the <i>minimax</i> algorithm, and really isn't too confusing—once you stare at it for an hour or so.
           </p>
           <h2>Minimax</h2>
           <p>
-            Minimax (abbrev. MM) is a recursive backtracking algorithm that tests out certain moves and assigns values to those moves based on whether they result in a win or loss down the line. In order for it to work, the 
+            Minimax (abbrev. MM) is a recursive backtracking algorithm that tests out available moves and assigns them values based on (a) whose turn it is and (b) whether it results in a win or loss down the line. A minimizing and a maximizing player are chosen. If the current ply<sup>1</sup> is 
           </p>
+          <pre>
+            <b>function</b> minimax(node, maximizing, depth):
+              <br />&nbsp;&nbsp;
+              <b>if</b> depth == 0 <b>or</b> is_terminal?(node):
+                <br/>&nbsp;&nbsp;&nbsp;&nbsp;
+            		<b>return</b> heuristic_value of node
+                <br/>&nbsp;&nbsp;
+            <b>if</b> maximizing:
+                <br/>&nbsp;&nbsp;&nbsp;
+            		value = −∞
+                <br/>&nbsp;&nbsp;&nbsp;&nbsp;
+           			<b>for each</b> child of node <b>do</b>:
+                <br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                  value = max(value, minimax(child, <b>not</b> maximizing, depth - 1))
+                <br/>&nbsp;&nbsp;&nbsp;&nbsp;
+            		<b>return</b> value
+                <br/>&nbsp;&nbsp;
+            	<b>else</b>:
+                <br/>&nbsp;&nbsp;&nbsp;
+            		value = ∞
+                <br/>&nbsp;&nbsp;&nbsp;&nbsp;
+            		<b>for each</b> child of node <b>do</b>:
+                  <br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            			value = min(value, minimax(child, <b>not</b> maximizing, depth - 1))
+                  <br/>&nbsp;&nbsp;&nbsp;&nbsp;
+            		<b>return</b> value
+          </pre>
           <div className="divider"/>
           <p>
-            By the time the assignment was due I was sure I knew how to make it work, but we were already moving on to new material, so I put it aside for the time being. But not too long ago, while going Facebook's React tutorial, which has you writing TTT the React way, I thought I might finally give it another go.
+            Though I felt like I had gained a good understanding of MM, I was not able to implement it Not too long ago, while going Facebook's React tutorial, which has you writing TTT the React way, I thought I might finally give it another go.
           </p>
+          <ol className="footnote">
+            <li>
+              meaning 'a single move being made' (to distinguish from "turn," because in some 2-player games (e.g., chess) a turn is complete when each player makes his move).
+            </li>
+          </ol>
         </Description>
       </div>
     )

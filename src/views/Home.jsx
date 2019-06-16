@@ -27,13 +27,13 @@ const Thumbnail = ({ to="", src="", alt="", title="" }) => (
 const Home = () => (
   <div className="Home fade-in">
     <Thumbnail
-      to="/tic-tac-toe"
-      src={`${process.env.PUBLIC_URL}/images/tictactoe.png`}
-      title="tic-tac-toe"/>
-    <Thumbnail
       to="/cgol"
       src={`${process.env.PUBLIC_URL}/images/cgol.png`}
       title="conway's game of life"/>
+    <Thumbnail
+      to="/tic-tac-toe"
+      src={`${process.env.PUBLIC_URL}/images/tictactoe.png`}
+      title="tic-tac-toe"/>
     <Thumbnail
       to="/dicube"
       src={`${process.env.PUBLIC_URL}/images/dicube.png`}

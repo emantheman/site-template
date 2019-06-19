@@ -395,7 +395,7 @@ export default class TicTacToe extends Component {
             		<b>return</b> value
           </pre>
           <p>
-            Because TTT is a game with relatively few unique terminal states (255,168), it is fairly trivial to test each one. As the game progresses, and there are less moves to test, the algorithm takes less time. In my implementation, the AI's move is determined within fractions of a second, however I've added a small delay before the O token is placed to give the impression that the computer is "thinking"—that there is real intellectual work being done behind the scenes.
+            Because TTT is a game with relatively few unique terminal states (255,168), it is fairly trivial to test each one. As the game progresses, and there are less moves to test, the algorithm takes less time. In my implementation, the AI's move is determined within fractions of a second, however I've added a small delay before the O-token is placed to give the impression that the computer is "thinking"—that there is real intellectual work being done behind the scenes.
           </p>
           <div className="divider"/>
           <ol className="footnote">

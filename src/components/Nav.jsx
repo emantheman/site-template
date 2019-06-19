@@ -1,4 +1,7 @@
 import React from 'react'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faEnvelope } from '@fortawesome/free-solid-svg-icons'
+import { faGithubAlt } from '@fortawesome/free-brands-svg-icons'
 import generateLinks from '../config/navlinks'
 import '../styles/Nav.scss'
 
@@ -12,11 +15,19 @@ const Nav = ({ path="/", name="emmanuel zen price" }) => {
   return (
     <header className="Nav">
       <h1 className={"title " + (path !== "/" ? "abroad" : "")}>
-        { name }
+        {name}
       </h1>
       <nav className="bar">
         <ul>
-          { Links }
+          {Links}
+          <li>
+            <a
+              href="mailto:mail@emmanuelprice.com"
+              title="email"
+              style={{fontSize: '15px'}}>
+              <FontAwesomeIcon icon={faEnvelope}/>
+            </a>
+          </li>
         </ul>
       </nav>
     </header>

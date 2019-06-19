@@ -1,3 +1,4 @@
+import About from '../views/About'
 import CGOL from '../views/CGOL'
 import Home from '../views/Home'
 import Rotator from '../views/Rotator'
@@ -19,6 +20,9 @@ const routes = [{
 }, {
   View: Rotator,
   path: '/t-rot'
+}, {
+  View: About,
+  path: '/about'
 }]
 
 export default routes

@@ -8,6 +8,7 @@ export default class Bezier extends Component {
     this.state = {
       hexColor: '000',
       lineWidth: 2,
+      scale: 1, 
       startingValue: 0,
       maxValue: 1300,
       step: 100,
@@ -49,16 +50,19 @@ export default class Bezier extends Component {
       case 'startingValue':
       case 'maxValue':
       case 'step':
-        return isNaN(value)
+      case 'scaleX':
+      case 'scaleY':
+        return isNaN(value) || value >= 3000
       default:
         return false
     }
   }
 
   draw = () => {
-    const {
+    let {
       hexColor,
       lineWidth,
+      scale,
       startingValue,
       maxValue,
       step,
@@ -72,34 +76,52 @@ export default class Bezier extends Component {
       endY
     } = this.state
     const { canvas } = this.refs
+    // default step - prevents infinite loop
+    if (step < 1) step = 1
+    // get context
     const ctx = canvas.getContext("2d")
+    // clear canvas
     ctx.clearRect(0, 0, canvas.width, canvas.height)
+    ctx.setTransform(1, 0, 0, 1, 0, 0) // resets transformations
+    // set line width, color, and scale
     ctx.lineWidth = lineWidth
     ctx.strokeStyle = `#${hexColor}`
+    ctx.scale(scale, scale)
+    // creates the path
     ctx.beginPath()
+    /* 
+    index is used in the following way:
+        If a variable's value is 'i' it can retrieve the current value of i from the for loop.
+        Otherwise, the Map-get will return null and the numerical value of the variable will be applied.
+    */
     const index = new Map()
+    // creates an array of bezier curves from input values
     for (let i = startingValue; i < maxValue; i += step) {
       index.set('i', i)
       ctx.moveTo(startX, startY)
-      ctx.bezierCurveTo(index.get(ip1) || +ip1,
-                        index.get(ip2) || +ip2,
-                        index.get(ip3) || +ip3,
-                        index.get(ip4) || +ip4, 
-                        index.get(endX) || +endX, 
-                        index.get(endY) || +endY)
+      ctx.bezierCurveTo(index.get(ip1) || ip1,
+                        index.get(ip2) || ip2,
+                        index.get(ip3) || ip3,
+                        index.get(ip4) || ip4, 
+                        index.get(endX) || endX, 
+                        index.get(endY) || endY)
     }
-    ctx.stroke()
+    ctx.stroke() // adds stroke to path
   }
+
+  ignore = name => ['hexColor', 'scale'].includes(name)
 
   onChange = ({ target: { name, value } }) => {
     if (this.invalid(name, value)) return
-    this.setState({ [name]: value }, this.draw)
+    this.setState({ [name]: isNaN(value) || this.ignore(name) ? value : +value }, this.draw)
   }
+
 
   render() {
     const {
       hexColor,
       lineWidth,
+      scale,
       startingValue,
       maxValue,
       step,
@@ -126,6 +148,8 @@ export default class Bezier extends Component {
             onChange={this.onChange} />
           <br/>
           lineWidth = <input type="text" value={lineWidth} name="lineWidth" title="lineWidth" onChange={this.onChange} />
+          <br/>
+          scale = <input type="text" value={scale} name="scale" title="scale" onChange={this.onChange} />
           <br/>
           for (let i = <input type="text" value={startingValue} name="startingValue" title="startingValue" onChange={this.onChange} />;
               i &lt; <input type="text" value={maxValue} name="maxValue" title="maxValue" onChange={this.onChange} />;

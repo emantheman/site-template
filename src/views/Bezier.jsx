@@ -77,9 +77,16 @@ export default class Bezier extends Component {
     ctx.lineWidth = lineWidth
     ctx.strokeStyle = `#${hexColor}`
     ctx.beginPath()
+    const index = new Map()
     for (let i = startingValue; i < maxValue; i += step) {
+      index.set('i', i)
       ctx.moveTo(startX, startY)
-      ctx.bezierCurveTo(ip1, ip2, ip3, ip4, endX, endY)
+      ctx.bezierCurveTo(index.get(ip1) || +ip1,
+                        index.get(ip2) || +ip2,
+                        index.get(ip3) || +ip3,
+                        index.get(ip4) || +ip4, 
+                        index.get(endX) || +endX, 
+                        index.get(endY) || +endY)
     }
     ctx.stroke()
   }
@@ -113,73 +120,64 @@ export default class Bezier extends Component {
           color = #
           <input
             type="text"
-            defaultValue={"000"}
             value={hexColor}
             name="hexColor"
             title="hexColor"
             onChange={this.onChange} />
           <br/>
-          lineWidth = <input type="text" defaultValue={2} value={lineWidth} name="lineWidth" title="lineWidth" onChange={this.onChange} />
+          lineWidth = <input type="text" value={lineWidth} name="lineWidth" title="lineWidth" onChange={this.onChange} />
           <br/>
-          for (let i = <input type="text" defaultValue={0} value={startingValue} name="startingValue" title="startingValue" onChange={this.onChange} />;
-              i &lt; <input type="text" defaultValue={1300} value={maxValue} name="maxValue" title="maxValue" onChange={this.onChange} />;
-              i += <input type="text" defaultValue={100} value={step} name="step" title="step" onChange={this.onChange} />)
+          for (let i = <input type="text" value={startingValue} name="startingValue" title="startingValue" onChange={this.onChange} />;
+              i &lt; <input type="text" value={maxValue} name="maxValue" title="maxValue" onChange={this.onChange} />;
+              i += <input type="text" value={step} name="step" title="step" onChange={this.onChange} />)
           <br/>&nbsp;&nbsp;&nbsp;&nbsp;
             bezierCurve(
               <input
                 type="text"
-                defaultValue={800}
                 value={startX}
                 name="startX"
                 title="startX" 
                 onChange={this.onChange} />,&nbsp;
               <input
                 type="text"
-                defaultValue={500}
                 value={startY}
                 name="startY"
                 title="startY" 
                 onChange={this.onChange} />,&nbsp;
               <input
                 type="text"
-                defaultValue={200}
                 value={ip1}
                 name="ip1"
                 title="inflectionPoint1" 
                 onChange={this.onChange} />,&nbsp;
               <input
                 type="text"
-                defaultValue={100}
                 value={ip2}
                 name="ip2"
                 title="inflectionPoint2" 
                 onChange={this.onChange} />,&nbsp;
               <input
                 type="text"
-                defaultValue={1000}
                 value={ip3}
                 name="ip3"
                 title="inflectionPoint3" 
                 onChange={this.onChange} />,&nbsp;
               <input
                 type="text"
-                defaultValue={"i"}
                 value={ip4}
                 name="ip4"
                 title="inflectionPoint4" 
                 onChange={this.onChange} />,&nbsp;
               <input
                 type="text"
-                defaultValue={150}
                 value={endX}
                 name="endX"
                 title="endX" 
                 onChange={this.onChange} />,&nbsp;
               <input
                 type="text"
-                defaultValue={50}
                 value={endY}
-                name="endY"ip1
+                name="endY"
                 title="endY" 
                 onChange={this.onChange} />
             )

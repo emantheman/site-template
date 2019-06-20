@@ -1,4 +1,5 @@
 import About from '../views/About'
+import Bezier from '../views/Bezier'
 import CGOL from '../views/CGOL'
 import Home from '../views/Home'
 import Rotator from '../views/Rotator'
@@ -23,6 +24,9 @@ const routes = [{
 }, {
   View: About,
   path: '/about'
+}, {
+  View: Bezier,
+  path: '/bezier'
 }]
 
 export default routes

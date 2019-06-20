@@ -42,6 +42,10 @@ const Home = () => (
       to="/t-rot"
       src={`${process.env.PUBLIC_URL}/images/t-rot.png`}
       title="text rotator"/>
+    <Thumbnail
+      to="/bezier"
+      src={`${process.env.PUBLIC_URL}/images/bezier.png`}
+      title="bezier"/>
   </div>
 )
 

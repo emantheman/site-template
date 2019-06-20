@@ -1,0 +1,11 @@
+.Bezier {
+  code {
+    input {
+      width: 25px;
+      text-align: center;
+      &:focus, &:active {
+        outline: initial;
+      }
+    }
+  }
+}

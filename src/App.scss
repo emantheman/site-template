@@ -12,13 +12,7 @@
   }
 }
 
-// defaults
-:focus, :active {
-  outline: 0;
-  border: none;
-  outline-style: none;
-}
-// (prevents sup/bs from affecting line-height
+// prevents sup/bs from affecting line-height
 sup, sub {
   vertical-align: baseline;
   position: relative;

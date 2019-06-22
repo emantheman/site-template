@@ -50,6 +50,7 @@
         }
         // squares inside row
         .Square {
+          outline: 0;
           background: #fff;
           border: 1px solid #999;
           float: left;

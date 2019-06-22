@@ -26,7 +26,7 @@ const routes = [{
   path: '/about'
 }, {
   View: Bezier,
-  path: '/bezier'
+  path: '/bézier'
 }]
 
 export default routes

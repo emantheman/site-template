@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import Description from '../components/Description'
 import '../styles/Bezier.scss'
 
 export default class Bezier extends Component {
@@ -8,40 +9,23 @@ export default class Bezier extends Component {
     this.state = {
       hexColor: '000',
       lineWidth: 2,
-      scale: 1, 
       startingValue: 0,
-      maxValue: 1300,
-      step: 100,
-      startX: 800,
-      startY: 500,
-      ip1: 200,
-      ip2: 100,
-      ip3: 1000,
+      maxValue: 800,
+      step: 20,
+      startX: 975,
+      startY: 100,
+      ip1: 0,
+      ip2: 1000,
+      ip3: 800,
       ip4: 'i',
       endX: 150,
-      endY: 50
+      endY: 0
     }
   }
   
 
   componentDidMount() {
-    const ctx = this.refs.canvas.getContext("2d")
-    ctx.lineWidth = 2
-    ctx.strokeStyle = "#000"
-    ctx.beginPath()
-    for (let i = 0; i < 1300; i += 100) {
-      ctx.moveTo(800, 500)
-      ctx.bezierCurveTo(200, 100, 1000, i, 150, 50)
-    }
-    // for (let i = 0; i < 1200; i += 30) {
-    //   ctx.moveTo(0, i*2)
-    //   ctx.bezierCurveTo(100, 200, 900, i, 300, -i)
-    // }
-    // for (let i = 0; i < 900; i += 50) {
-    //   ctx.moveTo(100, 200)
-    //   ctx.bezierCurveTo(150, 50, 900, i, 200, 400)
-    // }
-    ctx.stroke()
+    this.draw()
   }
 
   invalid = (name, value) => {
@@ -50,19 +34,34 @@ export default class Bezier extends Component {
       case 'startingValue':
       case 'maxValue':
       case 'step':
-      case 'scaleX':
-      case 'scaleY':
         return isNaN(value) || value >= 3000
       default:
         return false
     }
   }
 
+
+  randomize = () => {
+    this.setState({
+      hexColor: Math.floor(Math.random()*16777215).toString(16),
+      lineWidth: Math.ceil(Math.random() * 3),
+      maxValue: Math.ceil(Math.random() * 1200) + 300,
+      step: Math.ceil(Math.pow(Math.random(), 1.8) * 95) + 5,
+      startX: [Math.floor(Math.random() * (1000)), 'i'][Math.floor(Math.pow(Math.random(), 1.75) * 2)],
+      startY: [Math.floor(Math.random() * (200)), 'i'][Math.floor(Math.pow(Math.random(), 1.75) * 2)],
+      ip1: [Math.floor(Math.random() * (1000)), 'i'][Math.floor(Math.pow(Math.random(), 1.75) * 2)],
+      ip2: [Math.floor(Math.random() * (1000)), 'i'][Math.floor(Math.pow(Math.random(), 1.75) * 2)],
+      ip3: [Math.floor(Math.random() * (1000)), 'i'][Math.floor(Math.pow(Math.random(), 1.75) * 2)],
+      ip4: [Math.floor(Math.random() * (1000)), 'i'][Math.floor(Math.pow(Math.random(), 1.75) * 2)],
+      endX: [Math.floor(Math.random() * (1000)), 'i'][Math.floor(Math.pow(Math.random(), 1.75) * 2)],
+      endY: [Math.floor(Math.random() * (200)), 'i'][Math.floor(Math.pow(Math.random(), 1.75) * 2)]
+    }, this.draw)
+  }
+
   draw = () => {
     let {
       hexColor,
       lineWidth,
-      scale,
       startingValue,
       maxValue,
       step,
@@ -86,7 +85,6 @@ export default class Bezier extends Component {
     // set line width, color, and scale
     ctx.lineWidth = lineWidth
     ctx.strokeStyle = `#${hexColor}`
-    ctx.scale(scale, scale)
     // creates the path
     ctx.beginPath()
     /* 
@@ -109,11 +107,9 @@ export default class Bezier extends Component {
     ctx.stroke() // adds stroke to path
   }
 
-  ignore = name => ['hexColor', 'scale'].includes(name)
-
   onChange = ({ target: { name, value } }) => {
     if (this.invalid(name, value)) return
-    this.setState({ [name]: isNaN(value) || this.ignore(name) ? value : +value }, this.draw)
+    this.setState({ [name]: isNaN(value) || name === 'hexColor' ? value : +value }, this.draw)
   }
 
 
@@ -121,7 +117,6 @@ export default class Bezier extends Component {
     const {
       hexColor,
       lineWidth,
-      scale,
       startingValue,
       maxValue,
       step,
@@ -136,20 +131,24 @@ export default class Bezier extends Component {
     } = this.state
 
     return (
-      <div className="Bezier">
-        <canvas ref="canvas" width={1000} height={600} />
+      <div className="Bezier fade-in">
+        <canvas ref="canvas" width={1000} height={500} />
         <code>
-          color = #
+          lineWidth = <input type="text" value={lineWidth} name="lineWidth" title="lineWidth" onChange={this.onChange} />
+          <span
+            className="randomize"
+            onClick={this.randomize}>
+            randomize()
+          </span>
+          <br />
+          hexColor = #
           <input
+            className="color"
             type="text"
             value={hexColor}
             name="hexColor"
             title="hexColor"
             onChange={this.onChange} />
-          <br/>
-          lineWidth = <input type="text" value={lineWidth} name="lineWidth" title="lineWidth" onChange={this.onChange} />
-          <br/>
-          scale = <input type="text" value={scale} name="scale" title="scale" onChange={this.onChange} />
           <br/>
           for (let i = <input type="text" value={startingValue} name="startingValue" title="startingValue" onChange={this.onChange} />;
               i &lt; <input type="text" value={maxValue} name="maxValue" title="maxValue" onChange={this.onChange} />;
@@ -206,6 +205,15 @@ export default class Bezier extends Component {
                 onChange={this.onChange} />
             )
         </code>
+        <Description>
+          <p>
+            Here, a layer of abstraction overlays a complex interface, allowing users with no coding experience to get a feel for programmatic thinking through play.
+          </p>
+          <h2>Bézier curves</h2>
+          <p>
+            A Bézier curve is a parametric curve, commonly used in graphic design to render smooth curving lines as well as control the velocity of animations.
+          </p>
+        </Description>
       </div>
     )
   }

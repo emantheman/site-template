@@ -3,11 +3,32 @@
     border: 1px solid black;
   }
   code {
+    position: relative;
     input {
-      width: 25px;
+      font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New", monospace;
       text-align: center;
+      position: relative;
+      bottom: 2px;
+      width: 30px;
+      &.color {
+        width: 45px;
+      }
       &:focus, &:active {
         outline: initial;
+      }
+    }
+    .randomize {
+      cursor: pointer;
+      position: absolute;
+      background-color: blue;
+      border: 1px solid #1515d1;
+      color: white;
+      right: 0;
+      padding: 3px;
+      transition: .15s;
+      &:hover {
+        background-color: rgb(114, 114, 254);
+        border: 1px solid rgb(118, 118, 230);
       }
     }
   }
